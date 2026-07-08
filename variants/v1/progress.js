@@ -1,5 +1,11 @@
 (function () {
   const progressValue = document.getElementById("progressValue");
+  const modalProgressValue = document.getElementById("modalProgressValue");
+  const modalProgressBar = document.getElementById("modalProgressBar");
+  const uninstallButton = document.getElementById("uninstallButton");
+  const uninstallModal = document.getElementById("uninstallModal");
+  const modalStayButton = document.getElementById("modalStayButton");
+  const modalUninstallButton = document.getElementById("modalUninstallButton");
   const cards = Array.from(document.querySelectorAll("[data-feature-card]"));
   const tickIcon = "../../shared/assets/figma-mini-app/tick-circle-green.svg";
   const spinnerIcon = "../../shared/assets/figma-mini-app/loading-spinner.svg";
@@ -23,6 +29,8 @@
 
   function renderProgress() {
     progressValue.textContent = `${progress}%`;
+    modalProgressValue.textContent = `${progress}%`;
+    modalProgressBar.style.width = `${progress}%`;
 
     cards.forEach((card, index) => {
       const start = index * 25;
@@ -39,6 +47,15 @@
     });
   }
 
+  function openUninstallModal() {
+    if (progress === 100) return;
+    uninstallModal.hidden = false;
+  }
+
+  function closeUninstallModal() {
+    uninstallModal.hidden = true;
+  }
+
   function setProgress(nextProgress) {
     progress = Math.max(0, Math.min(100, Math.round(nextProgress)));
     renderProgress();
@@ -53,6 +70,10 @@
   }
 
   renderProgress();
+
+  uninstallButton.addEventListener("click", openUninstallModal);
+  modalStayButton.addEventListener("click", closeUninstallModal);
+  modalUninstallButton.addEventListener("click", closeUninstallModal);
 
   window.setInterval(() => {
     setProgress(progress + 1);

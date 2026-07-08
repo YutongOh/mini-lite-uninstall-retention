@@ -254,7 +254,7 @@ button:disabled {
   border: 0;
   background: var(--surface);
   overflow: hidden;
-  pointer-events: none;
+  pointer-events: auto;
   opacity: 1;
   transition: opacity 120ms ease;
 }
@@ -266,6 +266,10 @@ body.measure-mode {
 body.measure-mode #phone-wrap,
 body.measure-mode #app-frame {
   cursor: crosshair !important;
+}
+
+body.measure-mode #app-frame {
+  pointer-events: none;
 }
 
 .measure-highlight {

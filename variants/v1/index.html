@@ -27,7 +27,7 @@
         <img src="../../shared/assets/figma-mini-app/nav-back.svg" alt="" />
       </button>
       <span class="nav-spacer" aria-hidden="true"></span>
-      <button class="uninstall-button" type="button">Unistall</button>
+      <button class="uninstall-button" id="uninstallButton" type="button">Unistall</button>
     </nav>
 
     <section class="hero" aria-labelledby="loadingTitle">
@@ -89,6 +89,22 @@
       <button class="primary-button" type="button">Stay on TikTok Lite</button>
       <div class="home-indicator" aria-hidden="true">
         <span></span>
+      </div>
+    </section>
+
+    <section class="uninstall-modal" id="uninstallModal" role="dialog" aria-modal="true" aria-labelledby="uninstallModalTitle" hidden>
+      <div class="modal-scrim" aria-hidden="true"></div>
+      <div class="modal-card">
+        <h2 id="uninstallModalTitle">More features are loading...</h2>
+        <p class="modal-progress-text">(<span id="modalProgressValue">0%</span>)</p>
+        <div class="modal-progress-track" aria-hidden="true">
+          <span id="modalProgressBar"></span>
+        </div>
+        <p class="modal-copy">TikTok Lite is preparing the full experience for you. Stay a little longer to finish loading these features.</p>
+        <div class="modal-actions">
+          <button class="modal-primary-button" id="modalStayButton" type="button">Stay on TikTok Lite</button>
+          <button class="modal-secondary-button" id="modalUninstallButton" type="button">Unistall anyway</button>
+        </div>
       </div>
     </section>
   </main>
