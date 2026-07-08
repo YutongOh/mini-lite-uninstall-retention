@@ -196,20 +196,31 @@ button {
   animation-delay: 16s;
 }
 
-.hero h1 {
+.loading-title {
   width: 312px;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
   color: #000;
   font-size: 20px;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 0;
   text-align: center;
+  word-break: break-word;
+}
+
+.loading-title-line {
+  width: 100%;
+  display: block;
+  line-height: 1.25;
 }
 
 .feature-list {
   position: absolute;
   left: 0;
-  top: 302px;
+  top: 298px;
   width: 360px;
   display: flex;
   flex-direction: column;
@@ -280,35 +291,50 @@ button {
   animation: spin 1.2s linear infinite;
 }
 
-.supporting-copy {
+.bottom-retention {
   position: absolute;
-  left: 24px;
-  top: 648px;
-  width: 312px;
+  left: 0;
+  bottom: 0;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background: #fff;
+}
+
+.bottom-description {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px 0;
+  background: #fff;
+}
+
+.bottom-description p {
+  flex: 1 0 0;
+  min-width: 0;
   margin: 0;
   color: var(--text-secondary);
   font-size: 12px;
   font-weight: 400;
   line-height: 1.3;
   text-align: center;
+  word-break: break-word;
 }
 
-.bottom-cta {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 360px;
-  transform: translateX(-50%);
+.bottom-button {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding-top: 16px;
+  align-items: stretch;
+  padding: 12px 20px;
   background: #fff;
 }
 
 .primary-button {
-  width: 328px;
+  width: 100%;
   height: 48px;
   border: 0;
   border-radius: 999px;
@@ -320,22 +346,21 @@ button {
   text-align: center;
 }
 
-.home-indicator {
+.system-home-indicator {
   width: 360px;
-  height: 46px;
+  height: 24px;
   position: relative;
-  margin-top: 12px;
   overflow: hidden;
 }
 
-.home-indicator span {
+.system-home-indicator span {
   position: absolute;
   left: 50%;
-  bottom: 8px;
-  width: 140px;
-  height: 5px;
-  transform: translateX(-50%);
-  border-radius: 999px;
+  top: 50%;
+  width: 108px;
+  height: 4px;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
   background: #000;
 }
 
