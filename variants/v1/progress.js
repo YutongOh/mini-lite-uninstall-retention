@@ -1,12 +1,5 @@
 (function () {
   const progressValue = document.getElementById("progressValue");
-  const modalProgressValue = document.getElementById("modalProgressValue");
-  const modalProgressRing = document.getElementById("modalProgressRing");
-  const uninstallButton = document.getElementById("uninstallButton");
-  const uninstallModal = document.getElementById("uninstallModal");
-  const modalCloseButton = document.getElementById("modalCloseButton");
-  const modalStayButton = document.getElementById("modalStayButton");
-  const modalUninstallButton = document.getElementById("modalUninstallButton");
   const cards = Array.from(document.querySelectorAll("[data-feature-card]"));
   const tickIcon = "../../shared/assets/figma-mini-app/tick-circle-green.svg";
   const spinnerIcon = "../../shared/assets/figma-mini-app/loading-spinner.svg";
@@ -29,9 +22,7 @@
   }
 
   function renderProgress() {
-    progressValue.textContent = `${progress}%`;
-    modalProgressValue.textContent = `${progress}%`;
-    modalProgressRing.style.setProperty("--modal-progress", `${progress}%`);
+    progressValue.textContent = `${Number.isInteger(progress) ? progress : progress.toFixed(1)}%`;
 
     cards.forEach((card, index) => {
       const start = index * 25;
@@ -48,17 +39,8 @@
     });
   }
 
-  function openUninstallModal() {
-    if (progress === 100) return;
-    uninstallModal.hidden = false;
-  }
-
-  function closeUninstallModal() {
-    uninstallModal.hidden = true;
-  }
-
   function setProgress(nextProgress) {
-    progress = Math.max(0, Math.min(100, Math.round(nextProgress)));
+    progress = Math.max(0, Math.min(100, nextProgress));
     renderProgress();
   }
 
@@ -72,13 +54,8 @@
 
   renderProgress();
 
-  uninstallButton.addEventListener("click", openUninstallModal);
-  modalCloseButton.addEventListener("click", closeUninstallModal);
-  modalStayButton.addEventListener("click", closeUninstallModal);
-  modalUninstallButton.addEventListener("click", closeUninstallModal);
-
   window.setInterval(() => {
-    setProgress(progress + 1);
+    setProgress(progress + 2.5);
   }, 1000);
 
   window.__miniAppProgress = {
