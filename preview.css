@@ -1,0 +1,425 @@
+:root {
+  --frame-w: 360px;
+  --frame-h: 800px;
+  --phone-border: 20px;
+  --surface: #ffffff;
+  --text-primary: #161823;
+  --text-secondary: rgba(0, 0, 0, 0.65);
+  --foreground: 240 10% 3.9%;
+  --secondary: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --border: 240 5.9% 90%;
+  --ring: 221.2 83.2% 53.3%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "TikTok Sans", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-primary);
+  background: #eef0f3;
+}
+
+body {
+  overflow: hidden;
+}
+
+.menu-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.menu-panel {
+  width: min(360px, 100%);
+  background: #fff;
+  border: 1px solid rgba(22, 24, 35, 0.08);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 16px 48px rgba(22, 24, 35, 0.12);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-secondary);
+}
+
+.menu-panel h1 {
+  margin: 0 0 18px;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.menu-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  color: #fff;
+  background: #fe2c55;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#shell {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.toolbar {
+  position: fixed;
+  top: max(10px, env(safe-area-inset-top, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: min(96vw, 760px);
+  height: 40px;
+  max-height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 6px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  color: hsl(var(--foreground));
+  backdrop-filter: blur(26px) saturate(180%);
+  -webkit-backdrop-filter: blur(26px) saturate(180%);
+  z-index: 30;
+}
+
+.toolbar-spacer {
+  flex: 1;
+  min-width: 8px;
+}
+
+.tool-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 6px;
+  border-left: 1px solid hsl(var(--border) / 0.65);
+}
+
+.tool-group:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+button,
+select {
+  height: 30px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: hsl(var(--foreground));
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+  outline: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 30px;
+  padding: 0 9px;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+select {
+  min-width: 72px;
+  max-width: 96px;
+  padding: 0 24px 0 9px;
+  appearance: none;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%2371717a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+button:hover,
+select:hover {
+  background: hsl(var(--secondary) / 0.82);
+}
+
+button:focus-visible,
+select:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.28);
+}
+
+button:disabled {
+  color: hsl(var(--muted-foreground) / 0.42);
+  background: transparent;
+  cursor: not-allowed;
+  opacity: 0.55;
+  box-shadow: none;
+}
+
+.icon-btn {
+  width: 30px;
+  padding: 0;
+}
+
+.icon-btn.is-active {
+  background: hsl(var(--secondary) / 0.88);
+  color: hsl(var(--foreground));
+}
+
+.toolbar-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  pointer-events: none;
+  fill: currentColor;
+}
+
+.zoom-label {
+  min-width: 40px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--muted-foreground));
+  font-size: 11px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.stage-caption {
+  position: absolute;
+  left: calc(50% + 210px);
+  top: 18px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: rgba(22, 24, 35, 0.52);
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+#phone-wrap {
+  position: absolute;
+  box-sizing: content-box;
+  left: 50%;
+  top: 74px;
+  width: var(--frame-w);
+  height: var(--frame-h);
+  transform-origin: top center;
+  will-change: transform;
+  border: 10px solid #111318;
+  border-radius: 38px;
+  overflow: hidden;
+  background: #050505;
+  box-shadow: 0 20px 64px rgba(22, 24, 35, 0.24);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#app-frame {
+  display: block;
+  width: var(--frame-w);
+  height: var(--frame-h);
+  border: 0;
+  background: var(--surface);
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 120ms ease;
+}
+
+body.measure-mode {
+  cursor: default;
+}
+
+body.measure-mode #phone-wrap,
+body.measure-mode #app-frame {
+  cursor: crosshair !important;
+}
+
+.measure-highlight {
+  position: fixed;
+  z-index: 40;
+  pointer-events: none;
+  border: 2px solid #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.65);
+  display: none;
+}
+
+.measure-gap-highlight {
+  position: fixed;
+  z-index: 40;
+  pointer-events: none;
+  background: rgba(59, 130, 246, 0.28);
+  outline: 1px dashed #3b82f6;
+  display: none;
+}
+
+.measure-spacing-guides {
+  position: fixed;
+  inset: 0;
+  z-index: 39;
+  pointer-events: none;
+}
+
+.measure-spacing-guide {
+  position: fixed;
+  pointer-events: none;
+  background: rgba(255, 59, 92, 0.35);
+  outline: 1px solid rgba(255, 59, 92, 0.85);
+  box-sizing: border-box;
+}
+
+.measure-spacing-guide::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: rgba(255, 59, 92, 0.92);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.measure-panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  min-width: 148px;
+  max-width: 280px;
+  z-index: 41;
+  pointer-events: none;
+  border-radius: 10px;
+  border: 1px solid hsl(var(--border) / 0.72);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  padding: 8px 10px;
+  display: none;
+}
+
+.measure-panel:not([hidden]) {
+  display: block;
+}
+
+.measure-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.measure-row + .measure-row {
+  margin-top: 4px;
+}
+
+.measure-row > span {
+  color: hsl(var(--muted-foreground));
+  flex-shrink: 0;
+}
+
+.measure-row > strong {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  text-align: right;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.measure-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+.measure-color-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: -0.01em;
+}
+
+.measure-stroke-sep {
+  opacity: 0.45;
+  padding: 0 1px;
+}
+
+.measure-box-sides {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.measure-box-sides span {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+
+@media (max-width: 640px) {
+  .toolbar {
+    width: calc(100vw - 16px);
+    max-width: none;
+  }
+
+  .toolbar-spacer {
+    display: none;
+  }
+
+  .zoom-label {
+    min-width: 34px;
+  }
+
+  .stage-caption {
+    display: none;
+  }
+}

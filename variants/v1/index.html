@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=360, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Mini App V1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-screen" data-node-id="5091:15120" data-name="List">
+    <section class="status-bar" data-node-id="5091:15245" aria-label="Status bar">
+      <div class="status-time">8:00</div>
+      <div class="status-icons" aria-hidden="true">
+        <div class="status-network">
+          <img class="status-wifi" src="../../shared/assets/figma-mini-app/status-wifi.svg" alt="" />
+          <img class="status-signal" src="../../shared/assets/figma-mini-app/status-signal.svg" alt="" />
+        </div>
+        <img class="status-battery" src="../../shared/assets/figma-mini-app/status-battery.svg" alt="" />
+      </div>
+    </section>
+
+    <nav class="nav-bar" data-node-id="5091:15261" aria-label="Navigation">
+      <button class="back-button" type="button" aria-label="Back">
+        <img src="../../shared/assets/figma-mini-app/nav-back.svg" alt="" />
+      </button>
+      <span class="nav-spacer" aria-hidden="true"></span>
+      <button class="uninstall-button" type="button">Unistall</button>
+    </nav>
+
+    <section class="hero" aria-labelledby="loadingTitle">
+      <div class="logo-frame" data-node-id="5091:15123">
+        <div class="logo-carousel" aria-label="TikTok Lite loading highlights">
+          <img class="logo-slide" src="../../shared/assets/figma-mini-app/hero-01.svg" alt="" />
+          <img class="logo-slide" src="../../shared/assets/figma-mini-app/hero-02.svg" alt="" />
+          <img class="logo-slide" src="../../shared/assets/figma-mini-app/hero-03.svg" alt="" />
+          <img class="logo-slide" src="../../shared/assets/figma-mini-app/hero-04.svg" alt="" />
+          <img class="logo-slide" src="../../shared/assets/figma-mini-app/hero-05.svg" alt="" />
+        </div>
+      </div>
+      <h1 id="loadingTitle">More features are loading...<br />(<span id="progressValue">0%</span>)</h1>
+    </section>
+
+    <section class="feature-list" aria-label="Feature readiness">
+      <article class="feature-card" data-feature-card data-node-id="5091:15138">
+        <img class="feature-icon" src="../../shared/assets/figma-mini-app/icon-person.svg" alt="" />
+        <div class="feature-copy">
+          <h2>Log in to interact</h2>
+          <p>Like, comment and share videos.</p>
+        </div>
+        <img class="feature-state" alt="" />
+      </article>
+
+      <article class="feature-card" data-feature-card data-node-id="5091:15148">
+        <img class="feature-icon" src="../../shared/assets/figma-mini-app/icon-search.svg" alt="" />
+        <div class="feature-copy">
+          <h2>Search and discover</h2>
+          <p>Find videos you'll love.</p>
+        </div>
+        <img class="feature-state" alt="" />
+      </article>
+
+      <article class="feature-card" data-feature-card data-node-id="5091:15157">
+        <img class="feature-icon" src="../../shared/assets/figma-mini-app/icon-inbox.svg" alt="" />
+        <div class="feature-copy">
+          <h2>Message your friends</h2>
+          <p>Chat, share and stay in touch.</p>
+        </div>
+        <img class="feature-state" alt="" />
+      </article>
+
+      <article class="feature-card" data-feature-card data-node-id="5091:15166">
+        <img class="feature-icon" src="../../shared/assets/figma-mini-app/icon-camera.svg" alt="" />
+        <div class="feature-copy">
+          <h2>Create your own content</h2>
+          <p>Turn your moments into videos.</p>
+        </div>
+        <img class="feature-state" alt="" />
+      </article>
+    </section>
+
+    <p class="supporting-copy" data-node-id="5091:15135">
+      Get the full TikTok Lite experience once all features are ready.
+    </p>
+
+    <section class="bottom-cta" data-node-id="5091:15235">
+      <button class="primary-button" type="button">Stay on TikTok Lite</button>
+      <div class="home-indicator" aria-hidden="true">
+        <span></span>
+      </div>
+    </section>
+  </main>
+  <script src="progress.js" defer></script>
+</body>
+</html>
