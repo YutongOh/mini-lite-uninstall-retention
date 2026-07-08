@@ -95,15 +95,17 @@
     <section class="uninstall-modal" id="uninstallModal" role="dialog" aria-modal="true" aria-labelledby="uninstallModalTitle" hidden>
       <div class="modal-scrim" aria-hidden="true"></div>
       <div class="modal-card">
-        <h2 id="uninstallModalTitle">More features are loading...</h2>
-        <p class="modal-progress-text">(<span id="modalProgressValue">0%</span>)</p>
-        <div class="modal-progress-track" aria-hidden="true">
-          <span id="modalProgressBar"></span>
+        <button class="modal-close-button" id="modalCloseButton" type="button" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+        <div class="modal-progress-ring" id="modalProgressRing" aria-hidden="true">
+          <span id="modalProgressValue">0%</span>
         </div>
-        <p class="modal-copy">TikTok Lite is preparing the full experience for you. Stay a little longer to finish loading these features.</p>
+        <h2 id="uninstallModalTitle">Are you sure you want to uninstall TikTok Lite?</h2>
+        <p class="modal-copy">All features are almost ready!</p>
         <div class="modal-actions">
-          <button class="modal-primary-button" id="modalStayButton" type="button">Stay on TikTok Lite</button>
-          <button class="modal-secondary-button" id="modalUninstallButton" type="button">Unistall anyway</button>
+          <button class="modal-action-button" id="modalStayButton" type="button">Later</button>
+          <button class="modal-action-button" id="modalUninstallButton" type="button">Uninstall</button>
         </div>
       </div>
     </section>

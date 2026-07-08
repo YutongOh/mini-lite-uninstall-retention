@@ -1,9 +1,10 @@
 (function () {
   const progressValue = document.getElementById("progressValue");
   const modalProgressValue = document.getElementById("modalProgressValue");
-  const modalProgressBar = document.getElementById("modalProgressBar");
+  const modalProgressRing = document.getElementById("modalProgressRing");
   const uninstallButton = document.getElementById("uninstallButton");
   const uninstallModal = document.getElementById("uninstallModal");
+  const modalCloseButton = document.getElementById("modalCloseButton");
   const modalStayButton = document.getElementById("modalStayButton");
   const modalUninstallButton = document.getElementById("modalUninstallButton");
   const cards = Array.from(document.querySelectorAll("[data-feature-card]"));
@@ -30,7 +31,7 @@
   function renderProgress() {
     progressValue.textContent = `${progress}%`;
     modalProgressValue.textContent = `${progress}%`;
-    modalProgressBar.style.width = `${progress}%`;
+    modalProgressRing.style.setProperty("--modal-progress", `${progress}%`);
 
     cards.forEach((card, index) => {
       const start = index * 25;
@@ -72,6 +73,7 @@
   renderProgress();
 
   uninstallButton.addEventListener("click", openUninstallModal);
+  modalCloseButton.addEventListener("click", closeUninstallModal);
   modalStayButton.addEventListener("click", closeUninstallModal);
   modalUninstallButton.addEventListener("click", closeUninstallModal);
 
