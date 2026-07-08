@@ -8,7 +8,7 @@
   --preview-bg: #eef0f3;
   --toolbar-bg: rgba(255, 255, 255, 0.94);
   --toolbar-border: rgba(0, 0, 0, 0.06);
-  --phone-shell: #111318;
+  --phone-shell: rgba(0, 0, 0, 0.65);
   --phone-shadow: rgba(22, 24, 35, 0.24);
   --foreground: 240 10% 3.9%;
   --secondary: 240 4.8% 95.9%;
@@ -24,7 +24,7 @@
   --preview-bg: #111216;
   --toolbar-bg: rgba(28, 28, 32, 0.94);
   --toolbar-border: rgba(255, 255, 255, 0.1);
-  --phone-shell: #050505;
+  --phone-shell: rgba(255, 255, 255, 0.1);
   --phone-shadow: rgba(0, 0, 0, 0.48);
   --foreground: 0 0% 96%;
   --secondary: 240 4% 18%;
@@ -151,7 +151,7 @@ select {
   outline: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: box-shadow 0.15s ease;
 }
 
 button {
@@ -198,6 +198,7 @@ button:disabled {
 }
 
 .icon-btn {
+  position: relative;
   width: 30px;
   padding: 0;
 }
@@ -208,6 +209,7 @@ button:disabled {
 }
 
 .toolbar-icon {
+  flex: 0 0 auto;
   width: 16px;
   height: 16px;
   display: block;
@@ -215,13 +217,23 @@ button:disabled {
   fill: currentColor;
 }
 
-.theme-icon-sun,
+.theme-icon {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.theme-icon-sun {
+  opacity: 0;
+}
+
 :root[data-theme="dark"] .theme-icon-moon {
-  display: none;
+  opacity: 0;
 }
 
 :root[data-theme="dark"] .theme-icon-sun {
-  display: block;
+  opacity: 1;
 }
 
 .zoom-label {
