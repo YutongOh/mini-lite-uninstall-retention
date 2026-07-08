@@ -9,6 +9,7 @@
   const ZOOM_FIT = 'fit';
   const ZOOM_STEPS = [0.5, 0.75, 1, 1.25, 1.5];
   const VARIANTS = [{ id: 'v1', label: 'V1', path: 'variants/v1/index.html' }];
+  const THEME_KEY = 'mini-lite-preview-theme';
 
   const els = {
     toolbar: document.getElementById('toolbar'),
@@ -23,6 +24,7 @@
     fastForwardBtn: document.getElementById('fastForwardBtn'),
     reloadBtn: document.getElementById('reloadBtn'),
     measureBtn: document.getElementById('measureBtn'),
+    themeToggleBtn: document.getElementById('themeToggleBtn'),
     measureHighlight: document.getElementById('measure-highlight'),
     measureGapHighlight: document.getElementById('measure-gap-highlight'),
     measureSpacingGuides: document.getElementById('measure-spacing-guides'),
@@ -32,6 +34,46 @@
   let currentVariant = 'v1';
   let zoomMode = ZOOM_FIT;
   let zoomIndex = 2;
+  let currentTheme = readStoredTheme();
+
+  function readStoredTheme() {
+    try {
+      const storedTheme = window.localStorage.getItem(THEME_KEY);
+      if (storedTheme === 'dark' || storedTheme === 'light') return storedTheme;
+    } catch (error) {
+      return 'light';
+    }
+    return 'light';
+  }
+
+  function syncFrameTheme() {
+    const doc = els.frame?.contentDocument;
+    if (!doc) return;
+    doc.documentElement.dataset.theme = currentTheme;
+  }
+
+  function applyTheme(theme) {
+    currentTheme = theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = currentTheme;
+    document.body.dataset.theme = currentTheme;
+    if (els.themeToggleBtn) {
+      const isDark = currentTheme === 'dark';
+      els.themeToggleBtn.classList.toggle('is-active', isDark);
+      els.themeToggleBtn.setAttribute('aria-pressed', String(isDark));
+      els.themeToggleBtn.setAttribute('aria-label', isDark ? '明亮模式' : '暗黑模式');
+      els.themeToggleBtn.setAttribute('title', isDark ? '明亮模式' : '暗黑模式');
+    }
+    try {
+      window.localStorage.setItem(THEME_KEY, currentTheme);
+    } catch (error) {
+      // Ignore storage failures in restricted browser contexts.
+    }
+    syncFrameTheme();
+  }
+
+  function toggleTheme() {
+    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  }
 
   function toolbarClearance() {
     const rect = els.toolbar?.getBoundingClientRect();
@@ -174,8 +216,10 @@
     els.zoomFitBtn?.addEventListener('click', setZoomFit);
     els.fastForwardBtn?.addEventListener('click', fastForwardProgress);
     els.reloadBtn?.addEventListener('click', reloadDemo);
+    els.themeToggleBtn?.addEventListener('click', toggleTheme);
     els.frame?.addEventListener('load', () => {
       els.frame.style.opacity = '1';
+      syncFrameTheme();
       requestAnimationFrame(applyLayout);
     });
     window.addEventListener('resize', applyLayout);
@@ -193,6 +237,7 @@
         },
       });
     }
+    applyTheme(currentTheme);
     setZoomFit();
   }
 

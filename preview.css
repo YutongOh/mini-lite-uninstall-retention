@@ -5,11 +5,31 @@
   --surface: #ffffff;
   --text-primary: #161823;
   --text-secondary: rgba(0, 0, 0, 0.65);
+  --preview-bg: #eef0f3;
+  --toolbar-bg: rgba(255, 255, 255, 0.94);
+  --toolbar-border: rgba(0, 0, 0, 0.06);
+  --phone-shell: #111318;
+  --phone-shadow: rgba(22, 24, 35, 0.24);
   --foreground: 240 10% 3.9%;
   --secondary: 240 4.8% 95.9%;
   --muted-foreground: 240 3.8% 46.1%;
   --border: 240 5.9% 90%;
   --ring: 221.2 83.2% 53.3%;
+}
+
+:root[data-theme="dark"] {
+  --surface: #000000;
+  --text-primary: #f5f5f5;
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --preview-bg: #111216;
+  --toolbar-bg: rgba(28, 28, 32, 0.94);
+  --toolbar-border: rgba(255, 255, 255, 0.1);
+  --phone-shell: #050505;
+  --phone-shadow: rgba(0, 0, 0, 0.48);
+  --foreground: 0 0% 96%;
+  --secondary: 240 4% 18%;
+  --muted-foreground: 240 5% 64%;
+  --border: 240 4% 26%;
 }
 
 * {
@@ -22,7 +42,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "TikTok Sans", "Helvetica Neue", Arial, sans-serif;
   color: var(--text-primary);
-  background: #eef0f3;
+  background: var(--preview-bg);
 }
 
 body {
@@ -91,9 +111,9 @@ body {
   align-items: center;
   gap: 5px;
   padding: 4px 6px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--toolbar-border);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.94);
+  background: var(--toolbar-bg);
   color: hsl(var(--foreground));
   backdrop-filter: blur(26px) saturate(180%);
   -webkit-backdrop-filter: blur(26px) saturate(180%);
@@ -195,6 +215,15 @@ button:disabled {
   fill: currentColor;
 }
 
+.theme-icon-sun,
+:root[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+
 .zoom-label {
   min-width: 40px;
   height: 30px;
@@ -222,7 +251,7 @@ button:disabled {
   display: flex;
   gap: 8px;
   align-items: center;
-  color: rgba(22, 24, 35, 0.52);
+  color: hsl(var(--muted-foreground));
   font-size: 12px;
   line-height: 16px;
   white-space: nowrap;
@@ -237,11 +266,11 @@ button:disabled {
   height: var(--frame-h);
   transform-origin: top center;
   will-change: transform;
-  border: 10px solid #111318;
+  border: 10px solid var(--phone-shell);
   border-radius: 38px;
   overflow: hidden;
-  background: #050505;
-  box-shadow: 0 20px 64px rgba(22, 24, 35, 0.24);
+  background: var(--phone-shell);
+  box-shadow: 0 20px 64px var(--phone-shadow);
   touch-action: none;
   user-select: none;
   -webkit-user-select: none;
