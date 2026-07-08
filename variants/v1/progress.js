@@ -22,7 +22,7 @@
   }
 
   function renderProgress() {
-    progressValue.textContent = `${Number.isInteger(progress) ? progress : progress.toFixed(1)}%`;
+    progressValue.textContent = `${Math.floor(progress)}%`;
 
     cards.forEach((card, index) => {
       const start = index * 25;
