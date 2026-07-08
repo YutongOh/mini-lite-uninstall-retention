@@ -22,7 +22,7 @@
   }
 
   function renderProgress() {
-    progressValue.textContent = `${Math.floor(progress)}%`;
+    progressValue.textContent = `${progress}%`;
 
     cards.forEach((card, index) => {
       const start = index * 25;
@@ -55,8 +55,8 @@
   renderProgress();
 
   window.setInterval(() => {
-    setProgress(progress + 2.5);
-  }, 1000);
+    setProgress(progress + 1);
+  }, 400);
 
   window.__miniAppProgress = {
     fastForward,
