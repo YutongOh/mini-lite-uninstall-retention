@@ -24,7 +24,7 @@
   --preview-bg: #111216;
   --toolbar-bg: rgba(28, 28, 32, 0.94);
   --toolbar-border: rgba(255, 255, 255, 0.1);
-  --phone-shell: rgba(255, 255, 255, 0.1);
+  --phone-shell: rgba(255, 255, 255, 0.06);
   --phone-shadow: rgba(0, 0, 0, 0.48);
   --foreground: 0 0% 96%;
   --secondary: 240 4% 18%;
@@ -255,20 +255,6 @@ button:disabled {
   overflow: hidden;
 }
 
-.stage-caption {
-  position: absolute;
-  left: calc(50% + 210px);
-  top: 18px;
-  z-index: 2;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  color: hsl(var(--muted-foreground));
-  font-size: 12px;
-  line-height: 16px;
-  white-space: nowrap;
-}
-
 #phone-wrap {
   position: absolute;
   box-sizing: content-box;
@@ -464,7 +450,4 @@ body.measure-mode #app-frame {
     min-width: 34px;
   }
 
-  .stage-caption {
-    display: none;
-  }
 }
