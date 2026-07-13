@@ -187,7 +187,7 @@ button {
   opacity: 0;
   visibility: hidden;
   will-change: opacity;
-  animation: heroSlide 20s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: heroSlide 25s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .logo-slide:nth-child(1) {
@@ -195,19 +195,19 @@ button {
 }
 
 .logo-slide:nth-child(2) {
-  animation-delay: 4s;
+  animation-delay: 5s;
 }
 
 .logo-slide:nth-child(3) {
-  animation-delay: 8s;
+  animation-delay: 10s;
 }
 
 .logo-slide:nth-child(4) {
-  animation-delay: 12s;
+  animation-delay: 15s;
 }
 
 .logo-slide:nth-child(5) {
-  animation-delay: 16s;
+  animation-delay: 20s;
 }
 
 .logo-slide-media {
@@ -506,11 +506,11 @@ button {
     opacity: 0;
     visibility: visible;
   }
-  3.75% {
+  3% {
     opacity: 1;
     visibility: visible;
   }
-  16.25% {
+  17% {
     opacity: 1;
     visibility: visible;
   }
